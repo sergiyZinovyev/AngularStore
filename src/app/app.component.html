@@ -9,5 +9,9 @@
     <button>Cart</button>
   </div>
 </div>
-<div class="prod"></div>
-<div class="cart"></div>
+<div class="prod" *ngFor="let x of newProdList">
+  <app-cprod [itemProd]="x"></app-cprod>
+</div>
+<div class="cart">
+  <app-ccart></app-ccart>
+</div>

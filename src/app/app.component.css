@@ -1,4 +1,19 @@
 .menu {
     display: flex;
-    background: rgb(92, 83, 94);
+    background: rgb(170, 153, 173);
+}
+.menu_display{
+    display: flex;
+}
+.prod{
+    display: flex;
+    margin: auto;
+    max-width: 1200px;
+    border: solid grey 2px;
+}
+.cart{
+    display: flex;
+    margin: auto;
+    max-width: 1200px;
+    border: solid grey 2px; 
 }
