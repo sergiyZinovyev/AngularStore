@@ -1,19 +1,38 @@
 .menu {
     display: flex;
+    width: 100%;
     background: rgb(170, 153, 173);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    padding: 10px;
+   
 }
 .menu_display{
     display: flex;
 }
-.prod{
+#prod{
     display: flex;
     margin: auto;
+    margin-top: 50px;
     max-width: 1200px;
-    border: solid grey 2px;
+    /*border: solid grey 2px;*/
+    box-sizing: border-box;
 }
-.cart{
+.grid{
     display: flex;
+    flex-wrap: wrap;
+}
+.list{
+    display: flex;
+    flex-direction: column;
+}
+#cart{
+    /*display: flex;*/
     margin: auto;
+    padding: 10px;
+    margin-top: 10px;
     max-width: 1200px;
-    border: solid grey 2px; 
+    /*border: solid grey 2px;*/
+    box-sizing: border-box;
 }

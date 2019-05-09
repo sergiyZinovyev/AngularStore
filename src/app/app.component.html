@@ -2,16 +2,21 @@
 <div class="menu">
   <div class="menu_display">
     <div>Display</div>
-    <button>List</button>
-    <button>Grid</button>
+    <button (click)="list_grid = 'list'">List</button>
+    <button (click)="list_grid = 'grid'">Grid</button>
   </div>
   <div>
     <button>Cart</button>
   </div>
 </div>
-<div class="prod" *ngFor="let x of newProdList">
-  <app-cprod [itemProd]="x"></app-cprod>
+<div id="prod" [ngClass]='list_grid' >
+  <div *ngFor="let x of newProdList">
+    <app-cprod [itemProd]="x" (addId)="addToCart($event)"></app-cprod>
+  </div>
 </div>
-<div class="cart">
-  <app-ccart></app-ccart>
+<div id="cart">
+  <h2>Cart</h2>
+  <div *ngFor="let x2 of newCartList">
+    <app-ccart [itemCart]="x2"></app-ccart>
+  </div>
 </div>

@@ -1,0 +1,9 @@
+.genprod{
+    /*display: flex;*/
+    margin: 10px;
+    max-width: 374px;
+    border: solid grey 2px; 
+}
+.image{
+    width: 100%;
+}

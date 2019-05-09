@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-cprod',
@@ -7,11 +7,15 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CprodComponent implements OnInit {
 
-  @Input() itemProd: {imageP: string, nameP: string, discrP: string, priseP: number};
+  @Input() itemProd: {idP: number, imageP: string, nameP: string, discrP: string, priseP: number};
+  @Output() addId = new EventEmitter<number>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  addToCart(id: number):void {
+    this.addId.emit(id);
+  }
 }

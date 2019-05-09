@@ -1,9 +1,9 @@
 <div class="genprod">
-  <div class="image"><img src="http://lorempixel.com/400/250/abstract" alt="" /></div>
+  <img class="image" src={{itemProd.imageP}} alt="" />
   <div class="info">
     <h3>{{itemProd.nameP}}</h3>
-    <p>description...</p>
-    <p><strong>$20.000</strong></p>
-    <button>add to cart</button>
+    <p>{{itemProd.discrP}}</p>
+    <p><strong>${{itemProd.priseP}}</strong></p>
+    <button (click)="addToCart(itemProd.idP)">add to cart</button>
   </div>
 </div>
