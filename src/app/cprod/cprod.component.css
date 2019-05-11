@@ -1,9 +1,13 @@
 .genprod{
-    /*display: flex;*/
+    display: flex;
+    margin: 10px;
+    border: solid rgb(170, 153, 173) 2px; 
+}
+.genprod_grid{
     margin: 10px;
     max-width: 374px;
-    border: solid grey 2px; 
+    border: solid rgb(170, 153, 173) 2px; 
 }
 .image{
-    width: 100%;
+    max-width: 374px;
 }

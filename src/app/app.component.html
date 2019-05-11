@@ -2,21 +2,55 @@
 <div class="menu">
   <div class="menu_display">
     <div>Display</div>
-    <button (click)="list_grid = 'list'">List</button>
-    <button (click)="list_grid = 'grid'">Grid</button>
+    <button (click)="styleList()">List</button>
+    <button (click)="styleGrid()">Grid</button>
   </div>
   <div>
-    <button>Cart</button>
+    <button (click)="visCart()">Cart ({{newCartList.length}})</button>
   </div>
 </div>
-<div id="prod" [ngClass]='list_grid' >
+
+<div [ngClass]='list_grid' >
   <div *ngFor="let x of newProdList">
-    <app-cprod [itemProd]="x" (addId)="addToCart($event)"></app-cprod>
+    <app-cprod [itemProd]="x" (addId)="addToCart($event)" [style]=this.prod_l_g></app-cprod>
   </div>
 </div>
-<div id="cart">
+
+<div [ngClass]='hideCart'>
+  <br>
   <h2>Cart</h2>
-  <div *ngFor="let x2 of newCartList">
-    <app-ccart [itemCart]="x2"></app-ccart>
+  <div class="itemCart">
+    <div>
+      <strong>NAME</strong>
+    </div>
+    <div>   
+      <strong>PRISE</strong>
+    </div>
+    <div>
+        <strong>NUMBER</strong>
+    </div>
+    <div class="right">
+        <strong>AMOUNT</strong>
+    </div>
+    <div class="right">
+    </div>      
   </div>
+  <div *ngFor="let x2 of newCartList">
+    <app-ccart [itemCart]="x2" (addP)="addProd($event)" (minusP)="minusProd($event)" (del)="delProdItem($event)"></app-ccart>
+  </div>
+  <div class="itemCart">
+      <div>
+        <strong>TOTAL PRISE</strong>
+      </div>
+      <div>   
+      </div>
+      <div>
+      </div>
+      <div class="right">
+          $<strong>{{totalCart()}}</strong>
+      </div>
+      <div class="right">
+        <button (click)="clear()">Clear cart</button>
+      </div>      
+    </div>
 </div>

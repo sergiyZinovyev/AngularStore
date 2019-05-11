@@ -1,5 +1,19 @@
 <div class="itemCart">
-  <p>
-      <strong>{{itemCart.nameP}}</strong> price: $<strong>{{itemCart.priseP}}</strong>
-  </p>
+  <div>
+    <strong>{{itemCart.nameP}}</strong>
+  </div>
+  <div>   
+    $<strong>{{itemCart.priseP}}</strong>
+  </div>
+  <div>
+    <button (click)="addProdToCart(itemCart.idP)" class="num">+</button>
+    {{itemCart.numP}}
+    <button (click)="minusProdToCart(itemCart.idP)" class="num">-</button>
+  </div>
+  <div class="right">
+      $<strong>{{itemCart.priseP * itemCart.numP}}</strong>
+  </div>
+  <div class="right">
+    <button (click)="delProd(itemCart.idP)">Delete</button>
+  </div>      
 </div>

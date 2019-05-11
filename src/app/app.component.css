@@ -1,5 +1,6 @@
 .menu {
     display: flex;
+    justify-content: space-around;
     width: 100%;
     background: rgb(170, 153, 173);
     position: fixed;
@@ -11,28 +12,49 @@
 .menu_display{
     display: flex;
 }
-#prod{
+.grid{
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     margin: auto;
     margin-top: 50px;
     max-width: 1200px;
     /*border: solid grey 2px;*/
     box-sizing: border-box;
 }
-.grid{
-    display: flex;
-    flex-wrap: wrap;
-}
 .list{
     display: flex;
     flex-direction: column;
+    margin: auto;
+    margin-top: 50px;
+    max-width: 1200px;
+    /*border: solid grey 2px;*/
+    box-sizing: border-box;
 }
-#cart{
-    /*display: flex;*/
+.cart{
+    display: block;
     margin: auto;
     padding: 10px;
     margin-top: 10px;
     max-width: 1200px;
     /*border: solid grey 2px;*/
     box-sizing: border-box;
+}
+.hide{
+    display: none;
+}
+.itemCart{
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+    padding: 5px;
+    width: 97%;
+    border: solid rgb(170, 153, 173) 2px;
+    color: rgb(170, 153, 173);
+}
+.itemCart div {
+    width: 20%;
+}
+.right{
+    text-align: right;
 }

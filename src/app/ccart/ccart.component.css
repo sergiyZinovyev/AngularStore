@@ -1,6 +1,20 @@
 .itemCart{
+    display: flex;
+    justify-content: space-between;
     margin: 5px;
     padding: 5px;
     width: 97%;
-    border: solid grey 2px;
+    border: solid rgb(170, 153, 173) 2px;
+}
+.itemCart div {
+    width: 20%;
+}
+.right{
+    text-align: right;
+}
+.num{
+    padding: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 13px;
 }

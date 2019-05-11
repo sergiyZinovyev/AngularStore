@@ -8,6 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 export class CprodComponent implements OnInit {
 
   @Input() itemProd: {idP: number, imageP: string, nameP: string, discrP: string, priseP: number};
+  @Input() style: string;
   @Output() addId = new EventEmitter<number>();
 
   constructor() { }
