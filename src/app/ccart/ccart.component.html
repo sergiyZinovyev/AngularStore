@@ -6,9 +6,9 @@
     $<strong>{{itemCart.priseP}}</strong>
   </div>
   <div>
-    <button (click)="addProdToCart(itemCart.idP)" class="num">+</button>
-    {{itemCart.numP}}
     <button (click)="minusProdToCart(itemCart.idP)" class="num">-</button>
+    {{itemCart.numP}}
+    <button (click)="addProdToCart(itemCart.idP)" class="num">+</button>
   </div>
   <div class="right">
       $<strong>{{itemCart.priseP * itemCart.numP}}</strong>

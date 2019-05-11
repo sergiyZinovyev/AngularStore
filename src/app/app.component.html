@@ -1,12 +1,16 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="menu">
-  <div class="menu_display">
-    <div>Display</div>
-    <button (click)="styleList()">List</button>
-    <button (click)="styleGrid()">Grid</button>
-  </div>
-  <div>
-    <button (click)="visCart()">Cart ({{newCartList.length}})</button>
+  <div class="cont_menu">
+    <div class="menu_display">
+      <div class="display">Display</div>
+      <div class="menu_display_but">
+        <button (click)="styleList()">List</button>
+        <button (click)="styleGrid()">Grid</button>
+      </div>
+    </div>
+    <div>
+      <button (click)="visCart()">Cart ({{newCartList.length}})</button>
+    </div>
   </div>
 </div>
 
@@ -18,19 +22,19 @@
 
 <div [ngClass]='hideCart'>
   <br>
-  <h2>Cart</h2>
+  <h2 class="cart_title">Shopping Cart</h2>
   <div class="itemCart">
     <div>
-      <strong>NAME</strong>
+      <strong>Name</strong>
     </div>
     <div>   
-      <strong>PRICE</strong>
+      <strong>Price</strong>
     </div>
     <div>
-        <strong>NUMBER</strong>
+        <strong>Quantity</strong>
     </div>
     <div class="right">
-        <strong>AMOUNT</strong>
+        <strong>Amount</strong>
     </div>
     <div class="right">
     </div>      
@@ -40,7 +44,7 @@
   </div>
   <div class="itemCart">
       <div>
-        <strong>TOTAL PRICE</strong>
+        <strong>Subtotal</strong>
       </div>
       <div>   
       </div>
