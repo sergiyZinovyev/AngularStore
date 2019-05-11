@@ -76,3 +76,12 @@
 .right{
     text-align: right;
 }
+
+@media screen and (max-width: 500px) {
+    .display{
+        display: none;
+    }
+    .menu_display_but{
+        display: none;
+    }
+}

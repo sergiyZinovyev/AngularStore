@@ -9,7 +9,7 @@
     border: solid rgb(170, 153, 173) 2px; 
 }
 .image{
-    max-width: 365px;
+    max-width: 100%;
 }
 .info{
     padding: 10px;
