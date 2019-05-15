@@ -9,7 +9,7 @@
       </div>
     </div>
     <div>
-      <button (click)="visCart()">Cart ({{newCartList.length}})</button>
+      <button (click)="visCart()">Cart</button>
     </div>
   </div>
 </div>
@@ -21,40 +21,7 @@
 </div>
 
 <div [ngClass]='hideCart'>
-  <br>
-  <h2 class="cart_title">Shopping Cart</h2>
-  <div class="itemCart">
-    <div>
-      <strong>Name</strong>
-    </div>
-    <div>   
-      <strong>Price</strong>
-    </div>
-    <div>
-        <strong>Quantity</strong>
-    </div>
-    <div class="right">
-        <strong>Amount</strong>
-    </div>
-    <div class="right">
-    </div>      
-  </div>
-  <div *ngFor="let x2 of newCartList">
-    <app-ccart [itemCart]="x2" (addP)="addProd($event)" (minusP)="minusProd($event)" (del)="delProdItem($event)"></app-ccart>
-  </div>
-  <div class="itemCart">
-      <div>
-        <strong>Subtotal</strong>
-      </div>
-      <div>   
-      </div>
-      <div>
-      </div>
-      <div class="right">
-          $<strong>{{totalCart()}}</strong>
-      </div>
-      <div class="right">
-        <button (click)="clear()">Clear cart</button>
-      </div>      
-    </div>
+ 
+    <app-ccart [itemCart]="itemCart"></app-ccart>
+  
 </div>

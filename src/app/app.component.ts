@@ -99,51 +99,14 @@ export class AppComponent {
     }
   ]
 
-  newCartList: {idP: number, imageP: string, nameP: string, discrP: string, priseP: number, numP?: number}[] = []
+  itemCart = {};
   
   addToCart(id: number): void{
-    if(this.checkArrIdVal(this.newCartList, id) >= 0){
-      this.newCartList[this.checkArrIdVal(this.newCartList, id)].numP += 1;
-    }
-    else{
-      this.newCartList.push(this.newProdList[id-1]);
-      this.newCartList[this.newCartList.length - 1].numP = 1;
-    }
-    console.log(this.newCartList);
+    this.itemCart = this.newProdList[id-1];
   }
-
-  addProd(id: number): void{
-    this.newCartList[this.checkArrIdVal(this.newCartList, id)].numP += 1;
-  }
-
-  minusProd(id: number): void{
-    if(this.newCartList[this.checkArrIdVal(this.newCartList, id)].numP > 0){
-      this.newCartList[this.checkArrIdVal(this.newCartList, id)].numP -= 1;
-    }
-  }
-
-  delProdItem(id: number): void{
-    this.newCartList.splice(this.checkArrIdVal(this.newCartList, id), 1);
-  }
-
-  totalCart(): number{
-    let total: number = 0;
-    for(let i: number = 0; i < this.newCartList.length; i++){
-      total += this.newCartList[i].priseP * this.newCartList[i].numP;
-    }
-    return total;
-  }
-
-  clear():{idP: number, imageP: string, nameP: string, discrP: string, priseP: number, numP?: number}[] {
-    return this.newCartList = [];
-  }
-
-  checkArrIdVal(array:{idP: number, imageP: string, nameP: string, discrP: string, priseP: number, numP?: number}[], val: number):number {
-    for (let i: number = 0; i < array.length; i++){
-      if (array[i].idP === val){
-        return i;
-      }
-    }
+  
+  ngOnInit(){
+    console.log(this.itemCart)
   }
   
 

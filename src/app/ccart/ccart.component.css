@@ -1,13 +1,20 @@
 .itemCart{
     display: flex;
     justify-content: space-between;
+    color: rgb(94, 84, 97);
     margin-bottom: 10px;
     padding: 5px;
     width: 100%;
     border: solid rgb(170, 153, 173) 2px;
     box-sizing: border-box;
-
 }
+
+.cart_title{
+    margin-top: 70px;
+    text-align: center;
+    color: rgb(94, 84, 97);
+}
+
 .itemCart div {
     width: 20%;
 }

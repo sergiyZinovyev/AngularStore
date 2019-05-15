@@ -1,19 +1,61 @@
-<div class="itemCart">
-  <div>
-    <strong>{{itemCart.nameP}}</strong>
+
+<h2 class="cart_title">Shopping Cart</h2>
+  <div class="itemCart">
+    <div>
+      <strong>Name</strong>
+    </div>
+    <div>   
+      <strong>Price</strong>
+    </div>
+    <div>
+        <strong>Quantity</strong>
+    </div>
+    <div class="right">
+        <strong>Amount</strong>
+    </div>
+    <div class="right">
+    </div>      
   </div>
-  <div>   
-    $<strong>{{itemCart.priseP}}</strong>
+  <div *ngFor="let item of cartList">
+  
+      <div class="itemCart">
+          <div>
+            <strong>{{item.nameP}}</strong>
+          </div>
+          <div>   
+            $<strong>{{item.priseP}}</strong>
+          </div>
+          <div>
+            <button (click)="minusProdToCart(item.idP)" class="num">-</button>
+            {{item.numP}}
+            <button (click)="addProdToCart(item.idP)" class="num">+</button>
+          </div>
+          <div class="right">
+              $<strong>{{item.priseP * item.numP}}</strong>
+          </div>
+          <div class="right">
+            <button (click)="delProd(item.idP)">Delete</button>
+          </div>      
+        </div>
+
+
   </div>
-  <div>
-    <button (click)="minusProdToCart(itemCart.idP)" class="num">-</button>
-    {{itemCart.numP}}
-    <button (click)="addProdToCart(itemCart.idP)" class="num">+</button>
-  </div>
-  <div class="right">
-      $<strong>{{itemCart.priseP * itemCart.numP}}</strong>
-  </div>
-  <div class="right">
-    <button (click)="delProd(itemCart.idP)">Delete</button>
-  </div>      
-</div>
+  <div class="itemCart">
+      <div>
+        <strong>Subtotal</strong>
+      </div>
+      <div>   
+      </div>
+      <div>
+      </div>
+      <div class="right">
+          $<strong>{{totalCart()}}</strong>
+      </div>
+      <div class="right">
+        <button (click)="clear()">Clear cart</button>
+      </div>      
+    </div>
+
+
+
+
