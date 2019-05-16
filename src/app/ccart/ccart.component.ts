@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, DoCheck} from '@angular/core';
 
+
 @Component({
   selector: 'app-ccart',
   templateUrl: './ccart.component.html',
@@ -8,6 +9,8 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges, DoCheck} fro
 export class CcartComponent implements OnInit, OnChanges, DoCheck {
 
   @Input() itemCart;
+  @Input() addToCartTrigger;
+  @Output() quantityProdInCart = new EventEmitter<number>();
   
 
   cartList = [];
@@ -34,7 +37,10 @@ export class CcartComponent implements OnInit, OnChanges, DoCheck {
       }
     }
   
+    this.quantityProdInCart.emit(this.countQuantity(this.cartList));
+
     console.log(this.cartList);
+    console.log(this.addToCartTrigger);
   }
 
   ngDoCheck(){
@@ -64,19 +70,30 @@ export class CcartComponent implements OnInit, OnChanges, DoCheck {
     }
   }
 
+  countQuantity(array:{idP: number, imageP: string, nameP: string, discrP: string, priseP: number, numP?: number}[]):number {
+    let n:number = 0;
+    for (let i: number = 0; i < array.length; i++){
+      n += array[i].numP;
+    }
+    return n;
+  }
+
 
   addProdToCart(id: number):void {
     this.cartList[this.checkArrIdVal(this.cartList, id)].numP += 1;
+    this.quantityProdInCart.emit(this.countQuantity(this.cartList));
   }
 
   minusProdToCart(id: number):void {
     if (this.cartList[this.checkArrIdVal(this.cartList, id)].numP > 0){
       this.cartList[this.checkArrIdVal(this.cartList, id)].numP -= 1;
+      this.quantityProdInCart.emit(this.countQuantity(this.cartList));
     }
   }
 
   delProd(id):void {
     this.cartList.splice(this.checkArrIdVal(this.cartList, id), 1);
+    this.quantityProdInCart.emit(this.countQuantity(this.cartList));
   }
 
   totalCart(): number{
@@ -88,6 +105,7 @@ export class CcartComponent implements OnInit, OnChanges, DoCheck {
   }
 
   clear() {
+    this.quantityProdInCart.emit(0);
     return this.cartList = [];
   }
 

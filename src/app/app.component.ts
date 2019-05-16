@@ -99,14 +99,23 @@ export class AppComponent {
     }
   ]
 
-  itemCart = {};
+  quantity: number = 0;
+  itemCart: {idP?: number, imageP?: string, nameP?: string, discrP?: string, priseP?: number} = {};
+  addToCartTrigger: number;
   
   addToCart(id: number): void{
     this.itemCart = this.newProdList[id-1];
+    this.addToCartTrigger = Math.random();
+    console.log(this.addToCartTrigger);
+  }
+  quantityProdInCart(id: number): number{
+    this.quantity = id;
+    return this.quantity
   }
   
   ngOnInit(){
-    console.log(this.itemCart)
+    console.log(this.itemCart);
+    
   }
   
 

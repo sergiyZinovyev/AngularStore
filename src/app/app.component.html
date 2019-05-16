@@ -9,7 +9,7 @@
       </div>
     </div>
     <div>
-      <button (click)="visCart()">Cart</button>
+      <button (click)="visCart()">Cart ({{quantity}})</button>
     </div>
   </div>
 </div>
@@ -22,6 +22,6 @@
 
 <div [ngClass]='hideCart'>
  
-    <app-ccart [itemCart]="itemCart"></app-ccart>
+    <app-ccart [itemCart]="itemCart" [addToCartTrigger]="addToCartTrigger" (quantityProdInCart)="quantityProdInCart($event)" ></app-ccart>
   
 </div>
