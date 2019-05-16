@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Prod } from './types';
 
 @Component({
   selector: 'app-root',
@@ -6,34 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   list_grid: string = 'grid';
   hideCart: string = 'hide';
   prod_l_g: string = "genprod_grid";
+  quantity: number = 0;
+  itemCart: Prod = {};
+  addToCartTrigger: number;
 
-  styleList(): void{
-   this.list_grid='list'; 
-   this.hideCart='hide';
-   this.prod_l_g="genprod";
-  }
-
-  styleGrid(): void{
-    this.list_grid='grid'; 
-    this.hideCart='hide';
-    this.prod_l_g="genprod_grid";
-   }
-
-  visCart(): void {
-    if (this.hideCart == "hide"){
-      this.hideCart = "cart";
-      this.list_grid = "hide";
-    }
-    else{
-      this.hideCart = "hide";
-      this.list_grid = "grid";
-    }
-  }
-
-  newProdList: {idP: number, imageP: string, nameP: string, discrP: string, priseP: number}[] = [
+  newProdList: Prod[] = [
     {
       idP: 1,
       imageP: "http://lorempixel.com/400/250/abstract",
@@ -98,25 +80,44 @@ export class AppComponent {
       priseP: 2900
     }
   ]
-
-  quantity: number = 0;
-  itemCart: {idP?: number, imageP?: string, nameP?: string, discrP?: string, priseP?: number} = {};
-  addToCartTrigger: number;
-  
-  addToCart(id: number): void{
-    this.itemCart = this.newProdList[id-1];
-    this.addToCartTrigger = Math.random();
-    console.log(this.addToCartTrigger);
-  }
-  quantityProdInCart(id: number): number{
-    this.quantity = id;
-    return this.quantity
-  }
   
   ngOnInit(){
     console.log(this.itemCart);
     
   }
+
+  styleList(): void{
+    this.list_grid='list'; 
+    this.hideCart='hide';
+    this.prod_l_g="genprod";
+   }
+ 
+  styleGrid(): void{
+     this.list_grid='grid'; 
+     this.hideCart='hide';
+     this.prod_l_g="genprod_grid";
+    }
+ 
+  visCart(): void {
+     if (this.hideCart == "hide"){
+       this.hideCart = "cart";
+       this.list_grid = "hide";
+     }
+     else{
+       this.hideCart = "hide";
+       this.list_grid = "grid";
+     }
+   }
+ 
+  addToCart(id: number): void{
+    this.itemCart = this.newProdList[id-1];
+    this.addToCartTrigger = Math.random();
+    console.log(this.addToCartTrigger);
+  }
   
+  quantityProdInCart(id: number): number{
+    this.quantity = id;
+    return this.quantity
+  }
 
 }

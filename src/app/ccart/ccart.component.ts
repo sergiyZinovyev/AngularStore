@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, DoCheck} from '@angular/core';
+import { Prod } from './../types';
 
 
 @Component({
@@ -8,20 +9,15 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges, DoCheck} fro
 })
 export class CcartComponent implements OnInit, OnChanges, DoCheck {
 
-  @Input() itemCart;
-  @Input() addToCartTrigger;
+  @Input() itemCart: Prod;
+  @Input() addToCartTrigger: number;
   @Output() quantityProdInCart = new EventEmitter<number>();
   
 
-  cartList = [];
+  cartList: Prod[] = [];
 
   constructor() {
    }
-
-
-  ngOnInit() {
-
-  }
 
   ngOnChanges(){
     if (!this.itemCart.idP) {this.cartList = []}
@@ -37,32 +33,19 @@ export class CcartComponent implements OnInit, OnChanges, DoCheck {
       }
     }
   
-    this.quantityProdInCart.emit(this.countQuantity(this.cartList));
+    this.outputQuantityProdInCart(this.cartList);
 
     console.log(this.cartList);
     console.log(this.addToCartTrigger);
   }
 
-  ngDoCheck(){
-    /*if (!this.itemCart.idP) {this.cartList = []}
-    else {
-    
-
-      if(this.checkArrIdVal(this.cartList, this.itemCart.idP) >= 0){
-        this.cartList[this.checkArrIdVal(this.cartList, this.itemCart.idP)].numP += 1;
-      }
-      else{
-        this.cartList.push(this.itemCart);
-        this.cartList[this.cartList.length - 1].numP = 1;
-      }
-    }
-  
-    console.log(this.cartList);*/
+  ngOnInit() {
   }
 
+  ngDoCheck(){
+  }
 
-
-  checkArrIdVal(array:{idP: number, imageP: string, nameP: string, discrP: string, priseP: number, numP?: number}[], val: number):number {
+  checkArrIdVal(array:Prod[], val: number):number {
     for (let i: number = 0; i < array.length; i++){
       if (array[i].idP === val){
         return i;
@@ -70,7 +53,7 @@ export class CcartComponent implements OnInit, OnChanges, DoCheck {
     }
   }
 
-  countQuantity(array:{idP: number, imageP: string, nameP: string, discrP: string, priseP: number, numP?: number}[]):number {
+  countQuantity(array:Prod[]):number {
     let n:number = 0;
     for (let i: number = 0; i < array.length; i++){
       n += array[i].numP;
@@ -81,19 +64,19 @@ export class CcartComponent implements OnInit, OnChanges, DoCheck {
 
   addProdToCart(id: number):void {
     this.cartList[this.checkArrIdVal(this.cartList, id)].numP += 1;
-    this.quantityProdInCart.emit(this.countQuantity(this.cartList));
+    this.outputQuantityProdInCart(this.cartList);
   }
 
   minusProdToCart(id: number):void {
     if (this.cartList[this.checkArrIdVal(this.cartList, id)].numP > 0){
       this.cartList[this.checkArrIdVal(this.cartList, id)].numP -= 1;
-      this.quantityProdInCart.emit(this.countQuantity(this.cartList));
+      this.outputQuantityProdInCart(this.cartList);
     }
   }
 
-  delProd(id):void {
+  delProd(id: number):void {
     this.cartList.splice(this.checkArrIdVal(this.cartList, id), 1);
-    this.quantityProdInCart.emit(this.countQuantity(this.cartList));
+    this.outputQuantityProdInCart(this.cartList);
   }
 
   totalCart(): number{
@@ -104,9 +87,13 @@ export class CcartComponent implements OnInit, OnChanges, DoCheck {
     return total;
   }
 
-  clear() {
+  clear():Prod[] {
     this.quantityProdInCart.emit(0);
     return this.cartList = [];
+  }
+
+  outputQuantityProdInCart(i:Prod[]){
+    this.quantityProdInCart.emit(this.countQuantity(i));
   }
 
 }

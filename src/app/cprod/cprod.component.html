@@ -3,7 +3,7 @@
   <div class="info">
     <h3>{{itemProd.nameP}}</h3>
     <p>{{itemProd.discrP}}</p>
-    <p><strong>${{itemProd.priseP}}</strong></p>
+    <p><strong>{{itemProd.priseP | currency}}</strong></p>
     <button (click)="addToCart(itemProd.idP)">add to cart</button>
   </div>
 </div>

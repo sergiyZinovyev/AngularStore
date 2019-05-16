@@ -23,7 +23,7 @@
             <strong>{{item.nameP}}</strong>
           </div>
           <div>   
-            $<strong>{{item.priseP}}</strong>
+            <strong>{{item.priseP | currency}}</strong>
           </div>
           <div>
             <button (click)="minusProdToCart(item.idP)" class="num">-</button>
@@ -31,7 +31,7 @@
             <button (click)="addProdToCart(item.idP)" class="num">+</button>
           </div>
           <div class="right">
-              $<strong>{{item.priseP * item.numP}}</strong>
+              <strong>{{item.priseP * item.numP | currency}}</strong>
           </div>
           <div class="right">
             <button (click)="delProd(item.idP)">Delete</button>
@@ -49,7 +49,7 @@
       <div>
       </div>
       <div class="right">
-          $<strong>{{totalCart()}}</strong>
+          <strong>{{totalCart() | currency}}</strong>
       </div>
       <div class="right">
         <button (click)="clear()">Clear cart</button>
